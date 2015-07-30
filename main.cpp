@@ -6,13 +6,18 @@
  */
 
 #include <iostream>
+#include <cstdio>
 #include "md5.h"
+#include "BufferToggle.h"
 
 using std::cout; using std::endl;
 
-int main(int argc, char *argv[])
-{
-    cout << "md5 of 'grape': " << md5("grape") << endl;
+int main(int argc, char *argv[]){
+    BufferToggle bt;
+    bt.off();
+    char n;
+    n = std::getchar();
+    cout << n << endl;
     return 0;
 }
 

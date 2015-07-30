@@ -35,6 +35,9 @@ documentation and/or software.
 
 /* system implementation headers */
 #include <cstdio>
+#include <string>
+#include <fstream>
+#include <streambuf>
 
 
 // Constants for MD5Transform routine.
@@ -354,9 +357,12 @@ std::ostream& operator<<(std::ostream& out, MD5 md5)
 
 //////////////////////////////
 
-std::string md5(const std::string str)
+std::string md5(char* str)
 {
-    MD5 md5 = MD5(str);
+	std::ifstream t(str);
+	std::string file((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+
+	MD5 md5 = MD5(file);
 
     return md5.hexdigest();
 }
